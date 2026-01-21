@@ -1,11 +1,11 @@
 package com.adpp.gateway.filter;
 
 import io.jsonwebtoken.Claims;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.adpp.gateway.security.JwtUtil;
@@ -25,16 +25,11 @@ public class JwtAuthenticationFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
+        System.out.println("GATEWAY PATH = " + path);
 
-        // ✅ Allow auth endpoints without token
-        if (path.equals("/auth/login") || path.equals("/auth/register")) {
+        // ✅ ONLY login & register are public
+        if (path.startsWith("/auth/login") || path.startsWith("/auth/register")) {
             return chain.filter(exchange);
-        }
-
-        // 🔐 Check Authorization header
-        if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
         }
 
         String authHeader = exchange.getRequest()
@@ -42,6 +37,7 @@ public class JwtAuthenticationFilter implements GlobalFilter {
                 .getFirst(HttpHeaders.AUTHORIZATION);
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            System.out.println("❌ Missing or invalid Authorization header");
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
@@ -50,8 +46,8 @@ public class JwtAuthenticationFilter implements GlobalFilter {
 
         try {
             Claims claims = jwtUtil.validateToken(token);
+            System.out.println("✅ JWT VALID: " + claims);
 
-            // (Optional) Pass data to downstream services
             exchange = exchange.mutate()
                     .request(exchange.getRequest().mutate()
                             .header("X-User-Id", claims.get("userId").toString())
@@ -60,6 +56,8 @@ public class JwtAuthenticationFilter implements GlobalFilter {
                     .build();
 
         } catch (Exception e) {
+            System.out.println("❌ JWT ERROR");
+            e.printStackTrace();
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
