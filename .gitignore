@@ -15,3 +15,17 @@ Thumbs.db
 .DS_Store
 
 ~$*
+
+# Visual Studio
+.vs/
+**/.vs/
+*.suo
+
+# .NET build
+bin/
+obj/
+
+# Node/React
+node_modules/
+dist/
+.env
