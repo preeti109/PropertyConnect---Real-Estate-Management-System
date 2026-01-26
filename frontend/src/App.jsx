@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-function App() {
-  const [count, setCount] = useState(0)
+import AppRoutes from "./routes/AppRoutes";
+import {
+  setUser,
+  clearAuth,
+} from "./store/authSlice";
+import { getMyProfile } from "./api/userApi";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+  const dispatch = useDispatch();
+  const token = useSelector(
+    (state) => state.auth.token
+  );
+
+  useEffect(() => {
+    const loadUser = async () => {
+      if (!token) return;
+
+      try {
+        const res = await getMyProfile();
+
+        dispatch(setUser(res.data));
+      } catch (err) {
+        console.error("AUTO LOGIN FAILED", err);
+        dispatch(clearAuth());
+      }
+    };
+
+    loadUser();
+  }, [token, dispatch]);
+
+  return <AppRoutes />;
 }
-
-export default App
