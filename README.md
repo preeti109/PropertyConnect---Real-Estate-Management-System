@@ -1,36 +1,58 @@
-# 🏠 Property Connect – Real Estate Management System
+# 🏠 Property Connect  
+### Real Estate Management System
 
-Property Connect is a **microservices-based Real Estate Management System** built using a modern **React (Vite)** frontend and **.NET 8 microservices**.
-
-It allows users to browse properties, view details, send enquiries, and manage accounts through a responsive web interface.  
-This project demonstrates a **scalable real-world microservices architecture** with an **API Gateway** and multiple backend services.
+<p align="center">
+A <b>Microservices-Based Real Estate Management System</b><br>
+Built with <b>React (Vite)</b> and <b>.NET 8 Microservices</b>
+</p>
 
 ---
 
-## ✨ Features
+## 📌 Overview
+
+**Property Connect** is a modern **real estate management platform** that allows users to:
+
+- Browse properties
+- View property details
+- Send enquiries
+- Manage user accounts
+- Save properties
+
+The project is designed using a **Microservices Architecture** with an **API Gateway** for scalability and maintainability.
+
+---
+
+## 🚀 Features
 
 ### 👤 User Features
-- User Registration & Login
-- Secure Authentication (token-based)
-- Browse Properties
-- View Property Details
-- Send Property Enquiries
-- Add Properties to Cart / Saved Items
 
-### ⚙️ System Features
-- Microservices Architecture
-- API Gateway Routing
-- REST APIs
-- Clean service separation (Auth, User, Property, Cart, Enquiry)
-- Responsive React UI
+✔ User Registration & Login  
+✔ Secure Authentication  
+✔ Browse Properties  
+✔ Property Details Page  
+✔ Send Property Enquiries  
+✔ Save Properties to Cart  
 
 ---
 
-## 🏗️ Microservices Architecture
+### ⚙️ System Features
 
-```txt
-Frontend  →  API Gateway  →  Microservices  →  Database
-📁 Project Structure
+✔ Microservices Architecture  
+✔ API Gateway Routing  
+✔ REST API Integration  
+✔ Token Based Authentication  
+✔ Responsive React UI  
+
+---
+
+## 🏗️ System Architecture
+
+Frontend → API Gateway → Microservices → Database
+
+---
+
+## 📁 Project Structure
+
 Property-Connect
 │
 ├── api-gateway
@@ -40,157 +62,111 @@ Property-Connect
 ├── CartService
 ├── enquiry-service
 └── frontend
-🧩 Services Overview
-Service	Purpose
-api-gateway	Routes client requests to internal services
-auth-service	Authentication (login/register)
-user-service	User management
-PropertyService	Property listings management
-CartService	Cart / saved properties
-enquiry-service	Property enquiries handling
-frontend	React (Vite) UI
-🛠️ Tech Stack
-Frontend
 
-React.js (Vite)
 
-JavaScript
+---
 
-Redux Toolkit
+## 🧩 Microservices
 
-Axios
+| Service | Description |
+|--------|-------------|
+| **API Gateway** | Routes requests to backend services |
+| **Auth Service** | Handles login and authentication |
+| **User Service** | Manages users |
+| **Property Service** | Handles property listings |
+| **Cart Service** | Manages saved properties |
+| **Enquiry Service** | Handles property enquiries |
+| **Frontend** | React user interface |
 
-React Router
+---
 
-Backend
+## 🛠️ Technology Stack
 
-.NET 8 Web API
+### Frontend
 
-Microservices architecture
+- React.js (Vite)
+- Redux Toolkit
+- Axios
+- React Router
+- CSS
 
-Entity Framework Core
+### Backend
 
-MySQL Database
+- .NET 8 Web API
+- Entity Framework Core
+- Microservices Architecture
+- MySQL Database
 
-Tools
+### Tools
 
-Visual Studio / VS Code
+- Visual Studio
+- VS Code
+- Postman
+- Git Bash
+- GitHub
 
-Postman
+---
 
-Git & GitHub (Git Bash)
+## ✅ Prerequisites
 
-✅ Prerequisites
+Install before running the project:
 
-Install these before running the project:
+- Node.js
+- .NET 8 SDK
+- MySQL Server
+- Visual Studio or VS Code
 
-Node.js (LTS)
+---
 
-.NET 8 SDK
+## ⚙️ Installation Guide
 
-MySQL Server
+### 1️⃣ Clone Repository
 
-Visual Studio / VS Code
-
-🚀 Setup & Run (Step-by-Step)
-1) Clone Repository
+```bash
 git clone https://github.com/preeti109/PropertyConnect---Real-Estate-Management-System.git
 cd Property-Connect
-🗄️ Database Setup (MySQL)
 
-Create a database (example):
+🗄️ Database Setup
 
+Create MySQL database:
 CREATE DATABASE property_connect;
 
-Update connection strings in these service configs (where applicable):
-
+Update connection strings inside:
 auth-service/appsettings.json
-
 user-service/appsettings.json
-
 PropertyService/appsettings.json
-
 CartService/appsettings.json
-
 enquiry-service/appsettings.json
 
-✅ Tip: Keep your DB username/password in config or environment variables (recommended).
+▶️ Run Backend Services
 
-▶️ Run Backend Services (.NET)
-
-Run each service separately (recommended order):
+Run each service:
 
 auth-service
-
 user-service
-
 PropertyService
-
 CartService
-
 enquiry-service
-
 api-gateway
 
-Example:
-
-cd auth-service
-dotnet run
-
-Each service should open Swagger like:
-
-https://localhost:<PORT>/swagger
-🌐 Run Frontend (React + Vite)
-cd frontend
-npm install
-npm run dev
-
-Frontend default URL:
-
-http://localhost:5173
 🔐 Authentication
 
-Token-based authentication
+Token Based Authentication
 
-Protected routes implemented in frontend
+Protected Routes
 
-API calls handled via Axios configuration
+Axios API Integration
 
-Redux used for state management
+Redux State Management
 
-📸 Screenshots (Optional)
+💡 Future Improvements
 
-Create a folder named screenshots/ and add images like:
+Property Image Upload
 
-screenshots/home.png
-screenshots/login.png
-screenshots/property-details.png
+Advanced Search Filters
 
-Then show in README:
+Email Notifications
 
-![Home](screenshots/home.png)
-![Login](screenshots/login.png)
-![Property Details](screenshots/property-details.png)
-💡 Future Enhancements
+Payment Integration
 
-Property image upload
-
-Advanced search & filters
-
-Email notifications for enquiries
-
-Payment / booking module
-
-Mobile app version
-
-👩‍💻 Author
-
-Preeti
-B.Tech – Computer Science Engineering
-
-✅ Project Status
-
-✅ Completed
-✅ Microservices Implemented
-✅ Frontend Integrated
-✅ Ready for Demo & GitHub
+Mobile Application
