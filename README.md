@@ -1,90 +1,72 @@
-# 🏠 Property Connect  
-### Real Estate Management System
+# Property Connect
+## Real Estate Management System
 
-<p align="center">
-A <b>Microservices-Based Real Estate Management System</b><br>
-Built with <b>React (Vite)</b> and <b>.NET 8 Microservices</b>
-</p>
+Property Connect is a microservices-based real estate management system developed using **React (Vite)** for the frontend and **.NET 8 microservices** for the backend.
+
+The system allows users to browse properties, view property details, send enquiries, and manage their accounts through a responsive web interface.
+
+This project demonstrates a scalable microservices architecture with an API Gateway and multiple backend services.
 
 ---
 
-## 📌 Overview
+## Overview
 
-**Property Connect** is a modern **real estate management platform** that allows users to:
+Property Connect provides a simple platform where users can explore real estate properties online.
 
+Users can:
+
+- Create accounts
+- Login securely
 - Browse properties
 - View property details
 - Send enquiries
-- Manage user accounts
 - Save properties
 
-The project is designed using a **Microservices Architecture** with an **API Gateway** for scalability and maintainability.
+The system is built using a microservices architecture where each service handles a specific functionality.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 👤 User Features
+### User Features
 
-✔ User Registration & Login  
-✔ Secure Authentication  
-✔ Browse Properties  
-✔ Property Details Page  
-✔ Send Property Enquiries  
-✔ Save Properties to Cart  
+- User Registration and Login
+- Secure Authentication
+- Browse Properties
+- View Property Details
+- Send Property Enquiries
+- Save Properties in Cart
 
----
+### System Features
 
-### ⚙️ System Features
-
-✔ Microservices Architecture  
-✔ API Gateway Routing  
-✔ REST API Integration  
-✔ Token Based Authentication  
-✔ Responsive React UI  
+- Microservices Architecture
+- API Gateway Routing
+- REST API Communication
+- Token-Based Authentication
+- Responsive User Interface
 
 ---
 
-## 🏗️ System Architecture
+## Project Structure
 
-Frontend → API Gateway → Microservices → Database
+The project contains the following modules:
 
----
-
-## 📁 Project Structure
-
-Property-Connect
-│
-├── api-gateway
-├── auth-service
-├── user-service
-├── PropertyService
-├── CartService
-├── enquiry-service
-└── frontend
-
+- api-gateway – Routes requests to backend services  
+- auth-service – Handles authentication  
+- user-service – Manages users  
+- PropertyService – Manages property listings  
+- CartService – Manages saved properties  
+- enquiry-service – Handles enquiries  
+- frontend – React user interface
 
 ---
 
-## 🧩 Microservices
-
-| Service | Description |
-|--------|-------------|
-| **API Gateway** | Routes requests to backend services |
-| **Auth Service** | Handles login and authentication |
-| **User Service** | Manages users |
-| **Property Service** | Handles property listings |
-| **Cart Service** | Manages saved properties |
-| **Enquiry Service** | Handles property enquiries |
-| **Frontend** | React user interface |
-
----
-
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 
 - React.js (Vite)
+- JavaScript
 - Redux Toolkit
 - Axios
 - React Router
@@ -93,11 +75,11 @@ Property-Connect
 ### Backend
 
 - .NET 8 Web API
-- Entity Framework Core
 - Microservices Architecture
+- Entity Framework Core
 - MySQL Database
 
-### Tools
+### Tools Used
 
 - Visual Studio
 - VS Code
@@ -107,9 +89,9 @@ Property-Connect
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
-Install before running the project:
+The following software is required to run the project:
 
 - Node.js
 - .NET 8 SDK
@@ -118,55 +100,24 @@ Install before running the project:
 
 ---
 
-## ⚙️ Installation Guide
+## Authentication
 
-### 1️⃣ Clone Repository
+The system uses token-based authentication.
 
-```bash
-git clone https://github.com/preeti109/PropertyConnect---Real-Estate-Management-System.git
-cd Property-Connect
+Features include:
 
-🗄️ Database Setup
+- Secure login system
+- Protected routes
+- Axios API integration
+- Redux state management
 
-Create MySQL database:
-CREATE DATABASE property_connect;
+---
 
-Update connection strings inside:
-auth-service/appsettings.json
-user-service/appsettings.json
-PropertyService/appsettings.json
-CartService/appsettings.json
-enquiry-service/appsettings.json
+## Future Improvements
 
-▶️ Run Backend Services
+Possible future improvements include:
 
-Run each service:
-
-auth-service
-user-service
-PropertyService
-CartService
-enquiry-service
-api-gateway
-
-🔐 Authentication
-
-Token Based Authentication
-
-Protected Routes
-
-Axios API Integration
-
-Redux State Management
-
-💡 Future Improvements
-
-Property Image Upload
-
-Advanced Search Filters
-
-Email Notifications
-
-Payment Integration
-
-Mobile Application
+- Advanced search filters
+- Email notifications
+- Payment integration
+- Mobile application
